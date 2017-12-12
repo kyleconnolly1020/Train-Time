@@ -33,9 +33,6 @@ $("#add-train-btn").on("click", function (event) {
   //Uploads train data in database
   database.ref().push(newTrain);
 
-  //console log the info 
-  console.log(newTrain);
-
   //clear the input fields
   $("#train-name-input").val("");
   $("#destination-input").val("");
@@ -51,12 +48,6 @@ database.ref().on("child_added", function (childSnapshot) {
   var trainDest = childSnapshot.val().dest;
   var firstTrain = childSnapshot.val().firstTrain;
   var trainFreq = childSnapshot.val().frequency;
-
-  //Train's information
-  console.log(trainName);
-  console.log(trainDest);
-  console.log(firstTrain);
-  console.log(trainFreq);
 
   //Calculate the next arrival and the minutes away
   //Pushing back the first train time by 1 year (safeguard against current time coming before the firstTrain var)
